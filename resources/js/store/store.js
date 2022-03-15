@@ -12,6 +12,12 @@ export default new Vuex.Store({
         user: (state, getters) => {
             return state.user;
         },
+      buyitem: (state, getters) => {
+        return state.buyitem;
+      },
+      notes(state) {
+        return state.buyitem;
+      },
         tablet() {
             return state.windowWidth < 1300;
         },

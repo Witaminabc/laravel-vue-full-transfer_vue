@@ -1,50 +1,39 @@
-require('./bootstrap');
-
-import _ from 'lodash';
+// import '@babel/polyfill'
+// import 'mutationobserver-shim'
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import App from './components/App.vue'
-import { router } from './router'
+import './plugins/bootstrap-vue'
+import App from './App2'
+import router from './router'
+// import Vuex from 'vuex'
+// var Vuex = require('vuex')
+// import 'es6-promise/auto'
+// Vue.use(Vuex)
+//
+// const store = new Vuex.Store({
+//   state: {
+//     count: 0
+//   }
+// })
+
 import store from './store/store'
-import BootstrapVue from 'bootstrap-vue'
-import VueResize from 'vue-resize';
-import vClickOutside from 'v-click-outside'
-import {SET_WIDTH, SET_EXPAND} from "./store/mutation-names";
 
-Vue.use(VueRouter);
-Vue.use(BootstrapVue);
-Vue.use(VueResize);
-Vue.use(vClickOutside);
 
+
+
+Vue.config.productionTip = false
+
+/* eslint-disable no-new */
 new Vue({
-    store,
-    router: router,
-    render: h => h(App),
+  el: '#app',
+  store,
+  router:router,
 
-    mounted() {
-        this.$nextTick(() => {
-            window.addEventListener('resize', this.onResize);
-        })
-    },
-
-    methods: {
-        onResize() {
-            this.$store.commit(SET_WIDTH, window.innerWidth);
-        },
-
-        closeMenu() {
-            this.$store.commit(SET_EXPAND, false);
-        },
-        expandMenu() {
-            this.$store.commit(SET_EXPAND, !this.$store.getters.expand);
-        },
-
-        showSettingsModal() {
-            this.$bvModal.show('settings-modal');
-        },
-
-        hideSettingsModal() {
-            this.$bvModal.hide('settings-modal');
-        },
-    }
+  render: h => h(App)
 }).$mount('#app');
+
+//
+// new Vue({
+//   store
+//

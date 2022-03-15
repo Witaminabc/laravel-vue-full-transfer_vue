@@ -5,4 +5,6 @@ export default {
     musics: [],
     windowWidth:  window.innerWidth,
     expand: false,
+    count:50,
+    buyitem:[]
 }
